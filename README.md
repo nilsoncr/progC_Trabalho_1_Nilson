@@ -1,2 +1,0 @@
-# progC_Trabalho_1_Nilson
-campo_minado
