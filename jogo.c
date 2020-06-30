@@ -45,40 +45,7 @@ int AbreArea( int Tabuleiro[_Height_][_Width_],
      
      return ( cont );
   
-}
-	//Explodindo o Usuário
-	int vida = 1;
-	int pontos = 0;
-	int posi_jogador;  //variavel para guardar posição linha i do jogador.
-   	int posj_jogador;  //variavel para guardar posição coluna j do jogador.
-   	
-   	while(vida == 1 )
-   {
-       printf("Pontos: %d",pontos);
-       for(i = 0; i < Tabuleiro[_Height_][_Width_]; i++)
-           printf(" %d",i);
-       for(i = 0; i < Tabuleiro[_Height_][_Width_]; i++)
-       {   
-           printf("\n%d [",i);
-           if(Tabuleiro[_Height_][_Width_][posi_jogador][posj_jogador] == 1) //Se posição ja foi escolhida pelo jogador
-               printf("x ");   
-           printf("_ ");       
-           printf("]\n");
-       }
-       printf("Jogador:");
-       scanf("%d %d",&posi_jogador,&posj_jogador); //Recolhendo posição do Jogador
-       if(Tabuleiro[_Height_][_Width_][posi_jogador][posj_jogador] == -1)//Pisou na Bomba?
-       {
-           printf("PONTUAÇÃO FINAL: %d\n", pontuacao);
-           printf("        GAME OVER\n");
-       }
-       else
-       { 
-           Tabuleiro[_Height_][_Width_][posi_jogador][posj_jogador] = 1;  //Alivio, ainda esta vivo, Ganha um ponto
-           pontos++;
-       }
-   }
-   	
+}   	
    	
 
 void MostraTabuleiro(int Tabuleiro[_Height_][_Width_],
@@ -169,6 +136,39 @@ void MontaTabuleiro(int Tabuleiro[_Height_][_Width_])
         }
 
     }
+    
+    //Explodindo o Usuário
+	int vida = 1;
+	int pontos = 0;
+	int posi_jogador;  //variavel para guardar posição linha i do jogador.
+   	int posj_jogador;  //variavel para guardar posição coluna j do jogador.
+   	while (vida == 1 )
+   {
+       printf("Pontos: %d",pontos);
+       printf("\n");
+       for(i = 0; i < MontaTabuleiro[L][C]; i++)
+           printf(" %d",i);
+       for(i = 0; i < Tabuleiro[L][C]; i++)
+       {   
+           printf("\n%d [",i);
+           if(MontaTabuleiro[L][C][posi_jogador][posj_jogador] == 1) //Se posição ja foi escolhida pelo jogador
+               printf("x ");   
+           printf("_ ");       
+           printf("]\n");
+       }
+       printf("Jogador:");
+       scanf("%d %d",&posi_jogador,&posj_jogador); //Recolhendo posição do Jogador
+       if(MontaTabuleiro[L][C][posi_jogador][posj_jogador] == -1)//Pisou na Bomba?
+       {
+           printf("PONTUAÇÃO FINAL: %d\n", pontuacao);
+           printf("        GAME OVER\n");
+       }
+       else
+       { 
+           Tabuleiro[L][C][posi_jogador][posj_jogador] = 1;  //Alivio, ainda esta vivo, Ganha um ponto
+           pontos++;
+       }
+   }
 
     // contagem de bombas para cada célula
     int contBombas = 0;
@@ -230,3 +230,4 @@ int main()
     printf("\nCelulas abertas: %d\n", cont);
 
 }
+    
